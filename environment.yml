@@ -1,0 +1,29 @@
+# Conda environment for the `allo` covariance/GMV crisis study.
+# Create:  conda env create -f environment.yml
+# Update:  conda env update -f environment.yml --prune
+# Activate: conda activate allo
+name: allo
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - pip
+  - pip:
+      # ── core pipeline (src/ + all analysis scripts) ──
+      - numpy
+      - pandas
+      - pyarrow            # parquet IO for sp500/*.parquet
+      - scipy
+      - scikit-learn       # LedoitWolf, HistGradientBoostingRegressor, permutation_importance
+      - statsmodels        # OLS / HC3 robust SE
+      - cvxpy              # long-only GMV QP
+      - clarabel           # cvxpy CLARABEL solver
+      - matplotlib
+      - seaborn
+      # ── delta_weight_study.py optional upgrades (auto-detected) ──
+      - xgboost            # GBR backend swap-in
+      - shap               # M3 interpretability
+      # ── utilities ──
+      - tabulate           # pandas .to_markdown (optional)
+      - yfinance           # fetch_spy.py only
+      - jupyter            # notebooks/crisis_study.ipynb

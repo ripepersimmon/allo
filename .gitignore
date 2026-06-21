@@ -1,0 +1,26 @@
+# environments / caches
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.ipynb_checkpoints/
+.DS_Store
+.omc/
+
+# raw data — large / re-fetchable / licensing — not committed
+# per-ticker OHLCV parquet (~240MB, Yahoo); Fama-French CSVs (Ken French library)
+/sp500/
+/12_Industry_Portfolios_Daily.csv
+/49_Industry_Portfolios_Daily.csv
+/F-F_Research_Data_5_Factors_2x3_daily.csv
+/F-F_Research_Data_Factors_daily.csv
+
+# reference papers (copyright)
+*.pdf
+
+# generated experiment figures — regenerable; curated copies live in report/
+/results/
+
+# misc
+data/raw/
+data/processed/

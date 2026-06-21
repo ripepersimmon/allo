@@ -1,0 +1,44 @@
+Estimator: Gerber
+Selected delta: 0.9891  (half-life 63 trading days)
+N observations: 138850
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 weight   R-squared:                       0.091
+Model:                            OLS   Adj. R-squared:                  0.091
+Method:                 Least Squares   F-statistic:                     770.3
+Date:                Sat, 23 May 2026   Prob (F-statistic):               0.00
+Time:                        09:49:30   Log-Likelihood:             2.6826e+05
+No. Observations:              138850   AIC:                        -5.365e+05
+Df Residuals:                  138840   BIC:                        -5.364e+05
+Df Model:                           9                                         
+Covariance Type:              cluster                                         
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+Intercept             0.0107   4.84e-05    221.909      0.000       0.011       0.011
+z_beta               -0.0107      0.000    -45.589      0.000      -0.011      -0.010
+z_avg_corr           -0.0025    9.8e-05    -25.469      0.000      -0.003      -0.002
+z_liquidity           0.0006   9.72e-05      6.474      0.000       0.000       0.001
+z_momentum           -0.0019   8.53e-05    -21.980      0.000      -0.002      -0.002
+decay                -0.0017      0.000     -7.542      0.000      -0.002      -0.001
+decay:z_beta         -0.0012      0.000     -2.560      0.010      -0.002      -0.000
+decay:z_avg_corr      0.0028      0.000      6.077      0.000       0.002       0.004
+decay:z_liquidity    -0.0028      0.000    -13.261      0.000      -0.003      -0.002
+decay:z_momentum      0.0041      0.000     13.688      0.000       0.004       0.005
+==============================================================================
+Omnibus:                   159556.394   Durbin-Watson:                   2.056
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):         16701782.951
+Skew:                           6.092   Prob(JB):                         0.00
+Kurtosis:                      55.330   Cond. No.                         9.41
+==============================================================================
+
+Notes:
+[1] Standard Errors are robust to cluster correlation (cluster)
+
+VIF:
+const          1.000
+z_beta         1.095
+z_avg_corr     1.187
+z_liquidity    1.035
+z_momentum     1.167
