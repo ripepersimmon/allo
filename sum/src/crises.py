@@ -15,14 +15,20 @@ ENTER, EXIT = 30.0, 20.0
 MIN_DAYS, MERGE_GAP = 10, 42
 
 _PEAK_YEAR_NAMES = {
-    2008: 'GFC',
     2010: 'Flash Crash / EU',
-    2011: 'EU debt / US downgrade',
-    2015: 'China devaluation',
-    2018: 'Volmageddon',
+    2011: 'EU 부채 / 미국 강등',
+    2015: '중국 위안화 절하',
+    2018: '2018-Q4 Selloff',
     2020: 'COVID-19',
-    2022: 'Rate hikes / Ukraine',
+    2022: '금리 인상 / 우크라이나',
 }
+
+
+def _crisis_label(peak_date) -> str:
+    # 2008 has two episodes; split by peak month (Bear ~Mar, Lehman ~Nov).
+    if peak_date.year == 2008:
+        return 'GFC (Bear)' if peak_date.month < 6 else 'GFC (Lehman)'
+    return _PEAK_YEAR_NAMES.get(peak_date.year, f'VIX-spike {peak_date.year}')
 
 
 def load_vix(start="2005-01-01", end="2024-12-31", path="data/VIX.parquet") -> pd.Series:
@@ -71,7 +77,7 @@ def detect_vix_crises(vix: pd.Series | None = None, enter=ENTER, exit=EXIT,
         rows.append({
             'start': s, 'end': e, 'days': int(len(seg)),
             'peak_date': peak_d, 'peak_vix': round(float(seg.max()), 1),
-            'label': _PEAK_YEAR_NAMES.get(peak_d.year, f'VIX-spike {peak_d.year}'),
+            'label': _crisis_label(peak_d),
         })
     return pd.DataFrame(rows)
 
