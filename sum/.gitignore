@@ -1,0 +1,5 @@
+data/
+figures/
+tables/
+__pycache__/
+*.pyc

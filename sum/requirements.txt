@@ -1,0 +1,11 @@
+numpy
+pandas
+pyarrow
+scikit-learn
+statsmodels
+cvxpy
+clarabel
+xgboost
+shap
+matplotlib
+yfinance
